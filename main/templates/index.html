@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuldeep | Python Django Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f4f4f0;
+            color: #121212;
+        }
+        .serif-title {
+            font-family: 'Playfair Display', serif;
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .editorial-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .editorial-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #1a1a1a;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        .editorial-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-neutral-900 selection:text-white">
+
+    {% if messages %}
+    <div class="fixed top-6 right-6 z-50 max-w-sm w-full space-y-2">
+        {% for message in messages %}
+        <div class="p-4 bg-neutral-900 text-neutral-100 shadow-2xl text-xs font-mono flex justify-between items-center rounded-sm">
+            <span>• {{ message }}</span>
+            <button onclick="this.parentElement.remove()" class="text-neutral-400 hover:text-white ml-4 text-sm">&times;</button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="max-w-6xl mx-auto px-6 py-8 md:py-16">
+        
+        <!-- Header Section -->
+        <header class="flex justify-between items-center mb-24 text-[11px] uppercase tracking-widest font-medium border-b border-neutral-200 pb-6">
+            <div>
+                <a href="#" class="font-bold text-sm tracking-tighter text-neutral-900">KULDEEP.DEV</a>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8 text-neutral-500">
+                <a href="#about" class="editorial-link text-neutral-900">About Me</a>
+                <a href="#projects" class="editorial-link text-neutral-900">Projects</a>
+                <span class="text-neutral-300">|</span>
+                <a href="https://linkedin.com/in/kuldeep-kumar-5529372b0/" target="_blank" class="editorial-link text-neutral-900 font-semibold text-indigo-600">LinkedIn ↗</a>
+                <a href="https://github.com/Kuldeepkumar1289" target="_blank" class="editorial-link text-neutral-900 font-semibold">GitHub ↗</a>
+                <a href="mailto:kuldeepkumar76106@gmail.com" class="editorial-link text-neutral-900 font-semibold">Email ↗</a>
+            </nav>
+            <div class="text-neutral-400 font-mono text-[10px] hidden lg:block">
+                STATUS: LIVE
+            </div>
+        </header>
+
+        <!-- Main Hero -->
+        <main class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-40">
+            <div class="md:col-span-7 space-y-6">
+                <h1 class="serif-title text-5xl md:text-8xl font-normal tracking-tight text-neutral-900 uppercase leading-[0.95]">
+                    DEVELOPER<br><span class="italic font-light">PORTFOLIO</span>
+                </h1>
+                <div class="text-xs text-neutral-500 space-y-2 font-mono pt-4 border-t border-neutral-100 max-w-sm">
+                    <p>• Building functional web applications from scratch.</p>
+                    <p>• Powered by Python, Django, and database queries.</p>
+                </div>
+            </div>
+            
+            <!-- AI Resume Project Visual Showcase Box (Top Right) -->
+            <div class="md:col-span-5 hidden md:block pl-10 border-l border-neutral-200">
+                <div class="bg-white aspect-[4/3] w-full rounded-sm overflow-hidden border border-neutral-200 shadow-sm relative group">
+                    <img src="{% static 'Aiproject.png' %}" alt="AI Resume Analysis Result Showcase" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute bottom-2 left-2 bg-neutral-900/90 text-[9px] text-neutral-100 font-mono px-2 py-0.5 uppercase tracking-widest rounded-sm z-10">
+                        Featured: AI Resume Analyzer
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Section 2: About Me -->
+        <section id="about" class="grid grid-cols-1 md:grid-cols-12 gap-12 border-t border-neutral-200 pt-16 mb-40">
+            <div class="md:col-span-5">
+                <div class="bg-neutral-200/50 aspect-[4/5] w-full rounded-sm overflow-hidden border border-neutral-300 shadow-sm flex items-center justify-center p-2 group">
+                    <img src="{% static 'mypic.png' %}" alt="Kuldeep Headshot" class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-103">
+                </div>
+            </div>
+            <div class="md:col-span-7 flex flex-col justify-center space-y-6 md:pl-10">
+                <h3 class="serif-title text-3xl md:text-4xl font-normal text-neutral-900 uppercase tracking-tight">
+                    ABOUT ME
+                </h3>
+                <p class="text-neutral-500 text-sm md:text-base leading-relaxed font-light max-w-xl">
+                    I am a Full-Stack Web Developer who loves building practical applications using Python and Django. I enjoy writing clean backend code, managing database systems, and integrating frontend components seamlessly. My focus is on creating responsive, stable apps that solve real issues.
+                </p>
+                <div class="pt-4 flex gap-6 text-[11px] font-mono text-neutral-400 uppercase tracking-wider">
+                    <span>Python</span>
+                    <span>Django</span>
+                    <span>SQLite / MySQL</span>
+                    <span>HTML / Tailwind CSS</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Projects & Work (No more empty messages!) -->
+        <section id="projects" class="border-t border-neutral-200 pt-16 mb-40">
+            <div class="flex justify-between items-baseline mb-16">
+                <h3 class="serif-title text-3xl font-normal text-neutral-900 uppercase">My Projects & Work</h3>
+                <span class="text-xs text-neutral-400 font-mono tracking-widest uppercase">// Production Build</span>
+            </div>
+
+            <div class="space-y-16">
+                
+                <!-- AI Resume Analyzer Project Grid Item -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start group">
+                    <div class="md:col-span-3 font-mono text-xs text-neutral-400 space-y-1">
+                        <!-- Yahan direct tumhara GitHub Link trigger hoga -->
+                        <div class="text-neutral-900 font-medium">
+                            <a href="https://github.com/Kuldeepkumar1289" target="_blank" class="hover:text-indigo-600 transition-colors">REPOSITORY LINK ↗</a>
+                        </div>
+                        <div class="text-emerald-600 font-bold uppercase text-[9px] mt-1">Status: Fully Operational</div>
+                    </div>
+                    
+                    <div class="md:col-span-6 space-y-3">
+                        <h4 class="serif-title text-2xl font-normal text-neutral-900 group-hover:text-neutral-600 transition-colors uppercase">
+                            <a href="https://github.com/Kuldeepkumar1289" target="_blank" class="hover:underline">
+                                AI Resume Analyzer ↗
+                            </a>
+                        </h4>
+                        <p class="text-neutral-500 text-xs md:text-sm font-light leading-relaxed">
+                            A dynamic web application built with Python and Django that extracts text data from uploaded resumes using NLP techniques. It evaluates candidate match scores against specific job descriptions, flags missing skills, generates comprehensive career roadmaps, and provides automated job recommendations based on compliance parameters.
+                        </p>
+                    </div>
+
+                    <div class="md:col-span-3 md:text-right font-mono text-[11px] text-neutral-600 pt-1">
+                        Tech Used: Python, Django, SQLite, NLP Models, Tailwind CSS
+                    </div>
+                </div>
+                <div class="w-full h-[1px] bg-neutral-200 my-6"></div>
+                
+            </div>
+        </section>
+
+        <!-- Section 4: Contact -->
+        <section id="connect" class="border-t border-neutral-200 pt-16">
+            <div class="text-center mb-16">
+                <h3 class="serif-title text-3xl font-normal text-neutral-900 uppercase tracking-tight">GET IN TOUCH</h3>
+                <p class="text-xs text-neutral-400 font-mono mt-2 tracking-widest uppercase">// Drop a Message</p>
+            </div>
+
+            <div class="max-w-2xl mx-auto">
+                <form method="POST" action="" class="space-y-6">
+                    {% csrf_token %}
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="border-b border-neutral-300 focus-within:border-neutral-900 transition-colors py-2">
+                            <input type="text" name="client_identity" placeholder="YOUR NAME" class="w-full bg-transparent text-xs text-neutral-950 font-mono placeholder-neutral-400 focus:outline-none uppercase tracking-wider" required>
+                        </div>
+                        <div class="border-b border-neutral-300 focus-within:border-neutral-900 transition-colors py-2">
+                            <input type="email" name="client_mail" placeholder="YOUR EMAIL" class="w-full bg-transparent text-xs text-neutral-950 font-mono placeholder-neutral-400 focus:outline-none uppercase tracking-wider" required>
+                        </div>
+                    </div>
+                    <div class="border-b border-neutral-300 focus-within:border-neutral-900 transition-colors py-2 pt-4">
+                        <textarea name="secure_message" rows="3" placeholder="YOUR MESSAGE..." class="w-full bg-transparent text-xs text-neutral-950 font-mono placeholder-neutral-400 focus:outline-none uppercase tracking-wider" required></textarea>
+                    </div>
+                    <div class="text-center pt-6">
+                        <button type="submit" class="bg-neutral-900 hover:bg-neutral-800 text-white font-mono text-[11px] tracking-widest uppercase px-8 py-4 transition-all rounded-sm shadow-sm">
+                            SEND MESSAGE ↗
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <footer class="mt-40 pt-8 border-t border-neutral-200 text-center font-mono text-[10px] text-neutral-400 uppercase tracking-widest">
+            PORTFOLIO INSTANCE © 2026 KULDEEP
+        </footer>
+
+    </div>
+</body>
+</html>
