@@ -1,196 +1,285 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuldeep | Python Django Developer</title>
+    <title>Kuldeep | Python Django Full-Stack Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #f4f4f0;
-            color: #121212;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #030305;
+            color: #e2e8f0;
+            overflow-x: hidden;
         }
-        .serif-title {
-            font-family: 'Playfair Display', serif;
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        
+        /* Premium Matrix Line Decor */
+        .matrix-line {
+            background: linear-gradient(90deg, rgba(99, 102, 241, 0.2) 0%, rgba(244, 63, 94, 0.2) 50%, transparent 100%);
         }
-        .mono {
-            font-family: 'JetBrains Mono', monospace;
+        
+        /* Glassmorphism Panel layers */
+        .glass-panel {
+            background: linear-gradient(135deg, rgba(15, 15, 25, 0.7) 0%, rgba(6, 6, 12, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
         }
-        .editorial-link {
-            position: relative;
-            transition: color 0.3s ease;
+        
+        .interactive-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.08);
+            transform: scale(1.005) translateY(-2px);
         }
-        .editorial-link::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            transform: scaleX(0);
-            height: 1px;
-            bottom: -2px;
-            left: 0;
-            background-color: #1a1a1a;
-            transform-origin: bottom right;
-            transition: transform 0.25s ease-out;
-        }
-        .editorial-link:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
+        
+        /* Cyber Matrix Background dots */
+        .cyber-dots {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+            background-size: 24px 24px;
         }
     </style>
 </head>
-<body class="antialiased selection:bg-neutral-900 selection:text-white">
+<body class="antialiased cyber-dots min-h-screen relative selection:bg-indigo-600 selection:text-white">
 
+    <!-- Ambient Gradient Blur Maps -->
+    <div class="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-indigo-600/5 rounded-full blur-[140px] pointer-events-none"></div>
+    <div class="absolute bottom-[20%] left-[-10%] w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[140px] pointer-events-none"></div>
+
+    <!-- Django Core Messages System -->
     {% if messages %}
-    <div class="fixed top-6 right-6 z-50 max-w-sm w-full space-y-2">
+    <div class="fixed top-8 right-8 z-50 max-w-sm w-full">
         {% for message in messages %}
-        <div class="p-4 bg-neutral-900 text-neutral-100 shadow-2xl text-xs font-mono flex justify-between items-center rounded-sm">
-            <span>• {{ message }}</span>
-            <button onclick="this.parentElement.remove()" class="text-neutral-400 hover:text-white ml-4 text-sm">&times;</button>
+        <div class="glass-panel border-indigo-500/30 p-4 rounded-xl text-indigo-400 text-xs font-mono shadow-2xl flex justify-between items-center animate-bounce">
+            <span>⚡ [Message]: {{ message }}</span>
+            <button onclick="this.parentElement.remove()" class="text-neutral-500 hover:text-white ml-4">&times;</button>
         </div>
         {% endfor %}
     </div>
     {% endif %}
 
-    <div class="max-w-6xl mx-auto px-6 py-8 md:py-16">
+    <!-- SYSTEM SHELL CONTAINER -->
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-8 py-6 relative z-10">
         
-        <!-- Header Section -->
-        <header class="flex justify-between items-center mb-24 text-[11px] uppercase tracking-widest font-medium border-b border-neutral-200 pb-6">
-            <div>
-                <a href="#" class="font-bold text-sm tracking-tighter text-neutral-900">KULDEEP.DEV</a>
+        <!-- ================= NAVIGATION TERMINAL ================= -->
+        <header class="w-full flex justify-between items-center border-b border-neutral-900 pb-6 mb-16 font-mono text-xs">
+            <div class="flex items-center gap-4">
+                <a href="#" class="font-extrabold tracking-widest text-white text-sm bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">KULDEEP</a>
+                <span class="text-neutral-800 hidden lg:inline">//</span>
+                <span class="text-neutral-500 hidden lg:inline">Full-Stack Dev</span>
             </div>
-            <nav class="hidden md:flex items-center space-x-8 text-neutral-500">
-                <a href="#about" class="editorial-link text-neutral-900">About Me</a>
-                <a href="#projects" class="editorial-link text-neutral-900">Projects</a>
-                <span class="text-neutral-300">|</span>
-                <a href="https://linkedin.com/in/kuldeep-kumar-5529372b0/" target="_blank" class="editorial-link text-neutral-900 font-semibold text-indigo-600">LinkedIn ↗</a>
-                <a href="https://github.com/Kuldeepkumar1289" target="_blank" class="editorial-link text-neutral-900 font-semibold">GitHub ↗</a>
-                <a href="mailto:kuldeepkumar76106@gmail.com" class="editorial-link text-neutral-900 font-semibold">Email ↗</a>
+            
+            <nav class="hidden md:flex items-center space-x-10 text-neutral-400 font-sans text-sm">
+                <a href="#about" class="hover:text-indigo-400 transition-colors">About Me</a>
+                <a href="#skills" class="hover:text-indigo-400 transition-colors">Core Tech Stack</a>
+                <a href="#projects" class="hover:text-indigo-400 transition-colors">Featured Projects</a>
+                <a href="#connect" class="hover:text-indigo-400 transition-colors">Contact Me</a>
             </nav>
-            <div class="text-neutral-400 font-mono text-[10px] hidden lg:block">
-                STATUS: LIVE
+
+            <div class="flex items-center gap-3">
+                <a href="https://github.com/Kuldeepkumar1289" target="_blank" class="px-4 py-1.5 rounded-xl border border-neutral-800 text-neutral-300 hover:border-indigo-500 hover:text-white transition-all bg-neutral-950/50">GitHub ↗</a>
+                <a href="https://linkedin.com/in/kuldeep-kumar-5529372b0/" target="_blank" class="px-4 py-1.5 rounded-xl bg-indigo-600 border border-indigo-600 text-white hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-600/10">LinkedIn ↗</a>
             </div>
         </header>
 
-        <!-- Main Hero -->
-        <main class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-40">
-            <div class="md:col-span-7 space-y-6">
-                <h1 class="serif-title text-5xl md:text-8xl font-normal tracking-tight text-neutral-900 uppercase leading-[0.95]">
-                    DEVELOPER<br><span class="italic font-light">PORTFOLIO</span>
-                </h1>
-                <div class="text-xs text-neutral-500 space-y-2 font-mono pt-4 border-t border-neutral-100 max-w-sm">
-                    <p>• Building functional web applications from scratch.</p>
-                    <p>• Powered by Python, Django, and database queries.</p>
-                </div>
-            </div>
+        <!-- ================= INTERFACE HERO HULL ================= -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-32 items-stretch">
             
-            <!-- AI Resume Project Visual Showcase Box (Top Right) -->
-            <div class="md:col-span-5 hidden md:block pl-10 border-l border-neutral-200">
-                <div class="bg-white aspect-[4/3] w-full rounded-sm overflow-hidden border border-neutral-200 shadow-sm relative group">
-                    <img src="{% static 'Aiproject.png' %}" alt="AI Resume Analysis Result Showcase" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute bottom-2 left-2 bg-neutral-900/90 text-[9px] text-neutral-100 font-mono px-2 py-0.5 uppercase tracking-widest rounded-sm z-10">
-                        Featured: AI Resume Analyzer
+            <!-- Left Frame: Text Aggregator Console -->
+            <div class="lg:col-span-8 glass-panel rounded-3xl p-8 sm:p-12 flex flex-col justify-between relative overflow-hidden">
+                <div class="matrix-line h-[1px] w-full absolute top-0 left-0"></div>
+                
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-neutral-900 border border-neutral-800 font-mono text-[10px] text-indigo-400 uppercase tracking-widest">
+                        ⚡ Full-Stack Web Developer
+                    </div>
+                    <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight text-white uppercase leading-none">
+                        Python Django<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500">Full-Stack Engineering</span>
+                    </h1>
+                </div>
+
+                <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6 border-t border-neutral-900/80 pt-8 text-sm text-neutral-400">
+                    <div class="space-y-2">
+                        <span class="text-indigo-400 font-mono text-[11px] block uppercase tracking-wider">// Development Focus</span>
+                        <p class="leading-relaxed font-light">Building robust, end-to-end web applications using Python and Django framework with optimized database and frontend systems.</p>
+                    </div>
+                    <div class="space-y-2">
+                        <span class="text-indigo-400 font-mono text-[11px] block uppercase tracking-wider">// Project Capabilities</span>
+                        <p class="leading-relaxed font-light">Developing smart text extraction logic, building relational schemas, and deploying seamless production-ready platforms.</p>
                     </div>
                 </div>
             </div>
-        </main>
 
-        <!-- Section 2: About Me -->
-        <section id="about" class="grid grid-cols-1 md:grid-cols-12 gap-12 border-t border-neutral-200 pt-16 mb-40">
-            <div class="md:col-span-5">
-                <div class="bg-neutral-200/50 aspect-[4/5] w-full rounded-sm overflow-hidden border border-neutral-300 shadow-sm flex items-center justify-center p-2 group">
-                    <img src="{% static 'mypic.png' %}" alt="Kuldeep Headshot" class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-103">
-                </div>
-            </div>
-            <div class="md:col-span-7 flex flex-col justify-center space-y-6 md:pl-10">
-                <h3 class="serif-title text-3xl md:text-4xl font-normal text-neutral-900 uppercase tracking-tight">
-                    ABOUT ME
-                </h3>
-                <p class="text-neutral-500 text-sm md:text-base leading-relaxed font-light max-w-xl">
-                    I am a Full-Stack Web Developer who loves building practical applications using Python and Django. I enjoy writing clean backend code, managing database systems, and integrating frontend components seamlessly. My focus is on creating responsive, stable apps that solve real issues.
-                </p>
-                <div class="pt-4 flex gap-6 text-[11px] font-mono text-neutral-400 uppercase tracking-wider">
-                    <span>Python</span>
-                    <span>Django</span>
-                    <span>SQLite / MySQL</span>
-                    <span>HTML / Tailwind CSS</span>
+            <!-- Right Frame: Visual Asset Canvas -->
+            <div class="lg:col-span-4 glass-panel rounded-3xl p-4 flex flex-col justify-between relative overflow-hidden group">
+                <div class="matrix-line h-[1px] w-full absolute top-0 left-0"></div>
+                <div class="w-full bg-neutral-950 border border-neutral-900 rounded-2xl aspect-[4/5] overflow-hidden flex items-center justify-center p-4 relative shadow-2xl">
+                    <img src="{% static 'mypic.png' %}" alt="Kuldeep" class="max-w-[95%] max-h-[95%] object-contain rounded-xl contrast-110 transition-all duration-700 group-hover:scale-103">
+                    <div class="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-black/90 backdrop-blur border border-neutral-800 font-mono text-[10px] text-neutral-400 flex flex-col gap-1 items-start">
+                        <span class="text-white font-bold">KULDEEP</span>
+                        <span class="text-indigo-400 text-[9px] truncate w-full">Full-Stack Developer</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 3: Projects & Work (No more empty messages!) -->
-        <section id="projects" class="border-t border-neutral-200 pt-16 mb-40">
-            <div class="flex justify-between items-baseline mb-16">
-                <h3 class="serif-title text-3xl font-normal text-neutral-900 uppercase">My Projects & Work</h3>
-                <span class="text-xs text-neutral-400 font-mono tracking-widest uppercase">// Production Build</span>
+        <!-- ================= IDENTITY CORE MATRIX ================= -->
+        <section id="about" class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-32 items-center">
+            <div class="lg:col-span-4 space-y-2">
+                <div class="font-mono text-xs text-indigo-400 uppercase tracking-wider">// Profile Summary</div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white uppercase tracking-tight">About Me</h2>
+            </div>
+            <div class="lg:col-span-8 glass-panel rounded-2xl p-6 sm:p-8">
+                <p class="text-neutral-400 text-sm sm:text-base leading-relaxed font-light">
+                    I bridge the gap between complex backend architecture and fluid user experiences. As a **Python-Django Full-Stack Developer**, I engineer high-performance application logic, optimize relational databases (MySQL/SQLite), and build highly responsive, modern user interfaces powered by **Tailwind CSS**.
+                </p>
+            </div>
+        </section>
+
+        <!-- ================= TECHNICAL INTERACTIVE GRID ================= -->
+        <section id="skills" class="mb-32 space-y-8">
+            <div class="flex justify-between items-baseline">
+                <div class="space-y-2">
+                    <div class="font-mono text-xs text-indigo-400 uppercase tracking-wider">// Technical Skills</div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white uppercase tracking-tight">Core Tech Stack</h2>
+                </div>
             </div>
 
-            <div class="space-y-16">
-                
-                <!-- AI Resume Analyzer Project Grid Item -->
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start group">
-                    <div class="md:col-span-3 font-mono text-xs text-neutral-400 space-y-1">
-                        <!-- Yahan direct tumhara GitHub Link trigger hoga -->
-                        <div class="text-neutral-900 font-medium">
-                            <a href="https://github.com/Kuldeepkumar1289" target="_blank" class="hover:text-indigo-600 transition-colors">REPOSITORY LINK ↗</a>
-                        </div>
-                        <div class="text-emerald-600 font-bold uppercase text-[9px] mt-1">Status: Fully Operational</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Module 1 -->
+                <div class="glass-panel p-6 rounded-2xl space-y-4 border-l-2 border-l-indigo-500/40">
+                    <div class="font-mono text-xs text-neutral-600">01 // BACKEND</div>
+                    <h3 class="text-lg font-bold text-white uppercase tracking-tight">Core Logic</h3>
+                    <ul class="text-sm text-neutral-400 space-y-2 font-light">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-indigo-400 rounded-full"></span> Python</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-indigo-400 rounded-full"></span> Django Framework</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-indigo-400 rounded-full"></span> REST APIs</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-indigo-400 rounded-full"></span> Core Java</li>
+                    </ul>
+                </div>
+                <!-- Module 2 -->
+                <div class="glass-panel p-6 rounded-2xl space-y-4 border-l-2 border-l-purple-500/40">
+                    <div class="font-mono text-xs text-neutral-600">02 // FRONTEND</div>
+                    <h3 class="text-lg font-bold text-white uppercase tracking-tight">UI layers</h3>
+                    <ul class="text-sm text-neutral-400 space-y-2 font-light">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-purple-400 rounded-full"></span> HTML5 / CSS3</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-purple-400 rounded-full"></span> Tailwind CSS</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-purple-400 rounded-full"></span> JavaScript (ES6+)</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-purple-400 rounded-full"></span> Responsive Design</li>
+                    </ul>
+                </div>
+                <!-- Module 3 -->
+                <div class="glass-panel p-6 rounded-2xl space-y-4 border-l-2 border-l-pink-500/40">
+                    <div class="font-mono text-xs text-neutral-600">03 // STORAGE</div>
+                    <h3 class="text-lg font-bold text-white uppercase tracking-tight">Databases</h3>
+                    <ul class="text-sm text-neutral-400 space-y-2 font-light">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-pink-400 rounded-full"></span> MySQL</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-pink-400 rounded-full"></span> SQLite Engine</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-pink-400 rounded-full"></span> Database Schemas</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-pink-400 rounded-full"></span> Query Writing</li>
+                    </ul>
+                </div>
+                <!-- Module 4 -->
+                <div class="glass-panel p-6 rounded-2xl space-y-4 border-l-2 border-l-emerald-500/40">
+                    <div class="font-mono text-xs text-neutral-600">04 // DEVOPS</div>
+                    <h3 class="text-lg font-bold text-white uppercase tracking-tight">Tools & Hosting</h3>
+                    <ul class="text-sm text-neutral-400 space-y-2 font-light">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> Git / Version Control</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> Render Deploy</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> Gunicorn Server</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> WhiteNoise Caching</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PRODUCTION FACTORY (PROJECTS) ================= -->
+        <section id="projects" class="mb-32 space-y-8">
+            <div class="flex justify-between items-baseline">
+                <div class="space-y-2">
+                    <div class="font-mono text-xs text-indigo-400 uppercase tracking-wider">// Projects & Work</div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white uppercase tracking-tight">Featured Projects</h2>
+                </div>
+            </div>
+
+            <!-- Advanced Alternating Project Frame Matrix -->
+            <div class="glass-panel rounded-3xl overflow-hidden interactive-card transition-all duration-500 grid grid-cols-1 lg:grid-cols-12">
+                <!-- Project Visual Layer -->
+                <div class="lg:col-span-6 bg-neutral-950/80 p-6 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-neutral-900 group relative">
+                    <div class="w-full aspect-[16/10] rounded-2xl overflow-hidden border border-neutral-800 bg-black relative shadow-2xl">
+                        <img src="{% static 'Aiproject.png' %}" alt="AI Parsing System Matrix" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-101">
+                        <div class="absolute inset-0 bg-neutral-950/20 mix-blend-overlay"></div>
                     </div>
-                    
-                    <div class="md:col-span-6 space-y-3">
-                        <h4 class="serif-title text-2xl font-normal text-neutral-900 group-hover:text-neutral-600 transition-colors uppercase">
-                            <a href="https://github.com/Kuldeepkumar1289" target="_blank" class="hover:underline">
-                                AI Resume Analyzer ↗
-                            </a>
-                        </h4>
-                        <p class="text-neutral-500 text-xs md:text-sm font-light leading-relaxed">
-                            A dynamic web application built with Python and Django that extracts text data from uploaded resumes using NLP techniques. It evaluates candidate match scores against specific job descriptions, flags missing skills, generates comprehensive career roadmaps, and provides automated job recommendations based on compliance parameters.
+                </div>
+
+                <!-- Project Specification Details -->
+                <div class="lg:col-span-6 p-8 sm:p-10 flex flex-col justify-between space-y-8">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start gap-4">
+                            <div>
+                                <h3 class="text-2xl font-black text-white uppercase tracking-tight">AI Resume Analyzer Engine</h3>
+                                <p class="font-mono text-[11px] text-emerald-400 mt-1 uppercase tracking-wider">● Deployment: Live & Active</p>
+                            </div>
+                            <a href="https://github.com/Kuldeepkumar1289" target="_blank" class="font-mono text-xs px-4 py-2 bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 rounded-xl text-indigo-400 transition-all">Source Code ↗</a>
+                        </div>
+                        <p class="text-neutral-400 text-sm leading-relaxed font-light">
+                            A dynamic full-stack web application built using Python and the Django framework to extract and evaluate structural text fields from candidate resumes. Built custom scoring models to match resume details with targeted job metrics, pinpoint missing capabilities, and automatically render dynamic career roadmaps.
                         </p>
                     </div>
 
-                    <div class="md:col-span-3 md:text-right font-mono text-[11px] text-neutral-600 pt-1">
-                        Tech Used: Python, Django, SQLite, NLP Models, Tailwind CSS
+                    <!-- Meta Tags Module -->
+                    <div class="pt-4 border-t border-neutral-900/80 font-mono text-[10px] text-neutral-500 flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-neutral-950 rounded-full border border-neutral-800/80 text-neutral-400">Python 3</span>
+                        <span class="px-3 py-1 bg-neutral-950 rounded-full border border-neutral-800/80 text-neutral-400">Django Full-Stack</span>
+                        <span class="px-3 py-1 bg-neutral-950 rounded-full border border-neutral-800/80 text-neutral-400">NLP Logic Workflow</span>
+                        <span class="px-3 py-1 bg-neutral-950 rounded-full border border-neutral-800/80 text-neutral-400">Tailwind CSS</span>
                     </div>
                 </div>
-                <div class="w-full h-[1px] bg-neutral-200 my-6"></div>
-                
             </div>
         </section>
 
-        <!-- Section 4: Contact -->
-        <section id="connect" class="border-t border-neutral-200 pt-16">
-            <div class="text-center mb-16">
-                <h3 class="serif-title text-3xl font-normal text-neutral-900 uppercase tracking-tight">GET IN TOUCH</h3>
-                <p class="text-xs text-neutral-400 font-mono mt-2 tracking-widest uppercase">// Drop a Message</p>
-            </div>
+        <!-- ================= AUTOMATED COMPLIANCE FORM (CONTACT) ================= -->
+        <section id="connect" class="max-w-4xl mx-auto mb-24">
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 relative overflow-hidden">
+                <div class="matrix-line h-[1px] w-full absolute top-0 left-0"></div>
+                <div class="text-center mb-10">
+                    <div class="font-mono text-xs text-indigo-400 uppercase tracking-widest">// Message Terminal</div>
+                    <h2 class="text-3xl font-extrabold text-white uppercase mt-2 tracking-tight">Contact Me</h2>
+                </div>
 
-            <div class="max-w-2xl mx-auto">
-                <form method="POST" action="" class="space-y-6">
+                <form method="POST" action="" class="space-y-6 text-sm">
                     {% csrf_token %}
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="border-b border-neutral-300 focus-within:border-neutral-900 transition-colors py-2">
-                            <input type="text" name="client_identity" placeholder="YOUR NAME" class="w-full bg-transparent text-xs text-neutral-950 font-mono placeholder-neutral-400 focus:outline-none uppercase tracking-wider" required>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="font-mono text-[10px] text-neutral-500 uppercase block tracking-wider">Your Name</label>
+                            <input type="text" name="client_identity" placeholder="Enter your name..." class="w-full bg-neutral-950 border border-neutral-800 focus:border-indigo-500 rounded-xl p-4 text-white focus:outline-none transition-colors" required>
                         </div>
-                        <div class="border-b border-neutral-300 focus-within:border-neutral-900 transition-colors py-2">
-                            <input type="email" name="client_mail" placeholder="YOUR EMAIL" class="w-full bg-transparent text-xs text-neutral-950 font-mono placeholder-neutral-400 focus:outline-none uppercase tracking-wider" required>
+                        <div class="space-y-2">
+                            <label class="font-mono text-[10px] text-neutral-500 uppercase block tracking-wider">Your Email</label>
+                            <input type="email" name="client_mail" placeholder="Enter your email address..." class="w-full bg-neutral-950 border border-neutral-800 focus:border-indigo-500 rounded-xl p-4 text-white focus:outline-none transition-colors" required>
                         </div>
                     </div>
-                    <div class="border-b border-neutral-300 focus-within:border-neutral-900 transition-colors py-2 pt-4">
-                        <textarea name="secure_message" rows="3" placeholder="YOUR MESSAGE..." class="w-full bg-transparent text-xs text-neutral-950 font-mono placeholder-neutral-400 focus:outline-none uppercase tracking-wider" required></textarea>
+                    <div class="space-y-2">
+                        <label class="font-mono text-[10px] text-neutral-500 uppercase block tracking-wider">Your Message</label>
+                        <textarea name="secure_message" rows="5" placeholder="Type your message here..." class="w-full bg-neutral-950 border border-neutral-800 focus:border-indigo-500 rounded-xl p-4 text-white focus:outline-none transition-colors" required></textarea>
                     </div>
-                    <div class="text-center pt-6">
-                        <button type="submit" class="bg-neutral-900 hover:bg-neutral-800 text-white font-mono text-[11px] tracking-widest uppercase px-8 py-4 transition-all rounded-sm shadow-sm">
-                            SEND MESSAGE ↗
+                    <div class="text-center pt-2 font-mono text-xs">
+                        <button type="submit" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold tracking-widest uppercase px-10 py-4 rounded-xl transition-all shadow-xl shadow-indigo-600/10 hover:shadow-indigo-600/20 active:scale-98">
+                            Send Message ↗
                         </button>
                     </div>
                 </form>
             </div>
         </section>
 
-        <footer class="mt-40 pt-8 border-t border-neutral-200 text-center font-mono text-[10px] text-neutral-400 uppercase tracking-widest">
-            PORTFOLIO INSTANCE © 2026 KULDEEP
+        <!-- ================= SYSTEM INFRASTRUCTURE FOOTER ================= -->
+        <footer class="w-full pt-8 border-t border-neutral-900 font-mono text-[10px] text-neutral-600 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <span class="flex items-center gap-4">
+                <span>// Link: <a href="https://github.com/Kuldeepkumar1289" target="_blank" class="hover:underline">GitHub</a></span>
+            </span>
+            <span>Kuldeep Portfolio © 2026</span>
         </footer>
 
     </div>
